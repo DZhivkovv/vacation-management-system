@@ -1,0 +1,88 @@
+// Importing variables from another file
+@import "../../assets/styles/variables";
+
+// Navbar styles
+.navbar {
+  background-color: $primary-color; // Navy-blue 
+  color: #fff;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px;
+}
+
+// Styles for navigation links
+.nav-links a {
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+}
+
+/* NVNA logo styles */
+.logo img {
+  width: 75px;
+  filter: invert(100%);
+}
+  
+/* Styles for Navbar menu */
+.menu {
+  display: flex;
+
+  li {
+    border-top: 2px solid $primary-color; // Using primary color for borders
+    padding: 5px 20px;
+  }
+}
+
+/* Displays white line on top of the hovered link */
+.menu li:hover {
+  border-top: 2px solid white;
+}
+  
+/* Hamburger button styles */
+.hamburger {
+  display: none; // Hidden for devices wider than 768px.
+  font-size: 24px;
+}
+
+/* Hides the hamburger button for devices wider than 768px */
+input[type=checkbox] {
+  display: none;
+} 
+
+ /* Styles for active links */
+ .link-active {
+  color: red; // Change color to red for active links
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+  /* Styles for smaller screens */
+  .menu {
+    display: none; // Hide menu by default
+    background-color: $primary-color; // Using navy-blue color as background
+    position: absolute;
+    right: 0;
+    left: 0;
+    padding: 16px 0;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .menu li + li {
+    margin-top: 12px; // Spacing between menu items
+  }
+
+  /* Display menu when checkbox is checked */
+  input[type=checkbox]:checked ~ .menu {
+    display: block;
+  }
+
+  /* Show hamburger button */
+  .hamburger {
+    display: block;
+  }
+}
