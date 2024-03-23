@@ -1,67 +1,74 @@
 // Importing variables from another file
 @import "../../assets/styles/variables";
 
-// Navbar styles
-.navbar {
-  background-color: $primary-color; // Navy-blue 
-  color: #fff;
-  
+/* NAVIGATION BAR */
+.navbar 
+{
+  background-color: $primary-color; // Navy-blue background 
+  padding-left: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 20px;
 }
 
-// Styles for navigation links
-.nav-links a {
-  color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1.1rem;
-}
 
-/* NVNA logo styles */
-.logo img {
-  width: 75px;
+/* LINKS */
+/* Style for the logo which is also link to the homepage. */
+.logo 
+{
+  width: 65px;
   filter: invert(100%);
 }
-  
-/* Styles for Navbar menu */
-.menu {
+
+.link-container 
+{
   display: flex;
 
-  li {
-    border-top: 2px solid $primary-color; // Using primary color for borders
+  // Default link style. It doesn't matter if the link is active or not. This style will be applied to it.
+  .link
+  {
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
     padding: 5px 20px;
+
+    /* Displays white line on top of the hovered link */
+    &:hover
+    {
+      border-top: 2px solid white;
+    }
+  }
+
+  //Style for active links only.
+  .active-link 
+  {
+    border-top: 2px solid white;
   }
 }
 
-/* Displays white line on top of the hovered link */
-.menu li:hover {
-  border-top: 2px solid white;
-}
-  
-/* Hamburger button styles */
-.hamburger {
+
+/*HAMBURGER*/
+/* Hides the hamburger button for devices wider than 768px */
+.hamburger, input[type=checkbox]
+{
   display: none; // Hidden for devices wider than 768px.
-  font-size: 24px;
 }
 
-/* Hides the hamburger button for devices wider than 768px */
-input[type=checkbox] {
+.hamburger 
+{
+  font-size: 24px;
+  padding-right: 10px;
+  color: white;
   display: none;
 } 
 
- /* Styles for active links */
- .link-active {
-  color: red; // Change color to red for active links
-}
-
 
 /* Media Queries */
-@media (max-width: 768px) {
-  /* Styles for smaller screens */
-  .menu {
+@media (max-width: 768px) 
+{
+  /*LINKS*/
+  .link-container 
+  {
     display: none; // Hide menu by default
     background-color: $primary-color; // Using navy-blue color as background
     position: absolute;
@@ -70,19 +77,28 @@ input[type=checkbox] {
     padding: 16px 0;
     margin-top: 10px;
     text-align: center;
+
+    .link:hover, .active-link
+    {
+      border-top: 2px solid transparent;
+    }
   }
 
-  .menu li + li {
+  .link-container li + li 
+  {
     margin-top: 12px; // Spacing between menu items
   }
 
-  /* Display menu when checkbox is checked */
-  input[type=checkbox]:checked ~ .menu {
+
+  /* HAMBURGER */
+  /* Display menu when hamburger is clicked */
+  .hamburger, input[type=checkbox]:checked ~ .link-container 
+  {
     display: block;
   }
 
-  /* Show hamburger button */
-  .hamburger {
-    display: block;
+  .hamburger 
+  {
+    cursor: pointer;
   }
 }
