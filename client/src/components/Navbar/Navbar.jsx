@@ -9,34 +9,39 @@ import nvnaLogo from './nvna-logo.png'
 const Navbar = () => {
   return (
     <nav class="navbar">
-      {/* NVNA logo, also a link to the homepage */}
-      <div class="logo">
+      {/*Left part of navigation bar - NVNA logo, also a link to the homepage */}
+      <div>
         <NavLink to='/'>
-          <img src={nvnaLogo} alt='Nikola Vaptsarov Naval Academy'/>
+          <img src={nvnaLogo} alt='Nikola Vaptsarov Naval Academy' className='logo'/>
         </NavLink>      
       </div>
 
-      <ul class="nav-links">
-        {/* Hamburger button */}
+      {/*Right part of navigation bar - navbar links and a hamburger menu */}
+      <ul class="navigation-links">
+        {/* Hamburger button - hidden for devices bigger than 768px */}
         <input type="checkbox" id="checkbox_toggle" />
         <label for="checkbox_toggle" class="hamburger">&#9776;</label>
 
-        {/* Navbar links */}
-        <div class="menu">
-          {/* Link to page for scheduling vacations */}
+        {/* Navigation links */}
+        <div class="link-container">
+          {/* Link to page where the user can schedule a vacation */}
           <li>
             <NavLink 
               to="/schedule-vacation"
+              className={({ isActive }) =>
+              isActive ? "link active-link" : "link"}
             >
               Запазeте отпуск
             </NavLink>
           </li>
 
-          {/* Link to a page displaying a schedule of all vacations. */}
+          {/* Link to a page where the user can see all scheduled vacations by his colleagues or himself. */}
           <li>
             <NavLink 
               to="/schedule"
-            >
+              className={({ isActive }) =>
+              isActive ? "link active-link" : "link"
+            }>
               График с отпуски
             </NavLink>
           </li>
